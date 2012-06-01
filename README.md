@@ -18,6 +18,25 @@ To clear the styles you have applied, it's simple:
 $.stylist('reset');
 ```
 
+### Defining Properties Multiple Times
+
+Sometimes it's necessary to have the same property defined multiple times for a rule—a great example being CSS3 background gradients. For that, the syntax is:
+
+```javascript
+$.stylist({
+	'.btn': {
+		'background-image': [
+			'-moz-linear-gradient(top,#ffffff,#f2f2f2)',
+			'-ms-linear-gradient(top,#ffffff,#f2f2f2)',
+			'-webkit-gradient(linear,0 0,0 100%,from(#ffffff),to(#f2f2f2))',
+			'-webkit-linear-gradient(top,#ffffff,#f2f2f2)',
+			'-o-linear-gradient(top,#ffffff,#f2f2f2)',
+			'linear-gradient(top,#ffffff,#f2f2f2)'
+		]
+	}
+})
+```
+
 ## License
 
 Copyright (c) 2010 DIY Co

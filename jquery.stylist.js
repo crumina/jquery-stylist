@@ -59,15 +59,23 @@
 		
 		if (action === 'apply') {
 			// generate css
-			var lines = [];
+			var lines = [], suffix;
+			
 			for (selector in rules) {
 				if (rules.hasOwnProperty(selector)) {
 					rule = rules[selector];
 					var props = [];
 					for (property in rule) {
 						if (rule.hasOwnProperty(property)) {
-							var suffix = (rule[property].indexOf('!important') === -1) ? ' !important' : 0;
-							props.push(property + ': ' + rule[property] + suffix);
+							if (Array.isArray(rule[property])) {
+								for (var i = 0; i < rule[property].length; i++) {
+									suffix = (rule[property][i].indexOf('!important') === -1) ? ' !important' : '';
+									props.push(property + ': ' + rule[property][i] + suffix);
+								}
+							} else {
+								suffix = (rule[property].indexOf('!important') === -1) ? ' !important' : '';
+								props.push(property + ': ' + rule[property] + suffix);
+							}
 						}
 					}
 					lines.push(selector + ' { ' + props.join('; ') + ' }');
