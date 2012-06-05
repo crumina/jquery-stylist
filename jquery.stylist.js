@@ -67,7 +67,7 @@
 					var props = [];
 					for (property in rule) {
 						if (rule.hasOwnProperty(property)) {
-							if (Array.isArray(rule[property])) {
+							if ($.isArray(rule[property])) {
 								for (var i = 0; i < rule[property].length; i++) {
 									suffix = (rule[property][i].indexOf('!important') === -1) ? ' !important' : '';
 									props.push(property + ': ' + rule[property][i] + suffix);
