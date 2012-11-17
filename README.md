@@ -1,8 +1,8 @@
-# jQuery Stylist
+# .stylist()
 
-A jQuery plugin (**1kb**) for creating and applying CSS stylesheets on the fly—useful for sites with user-generated themes. This plugin works for all major browsers: IE, Firefox, Webkit (Chrome, Safari, etc) and Opera.
+A tiny <strong>1kb</strong> [jQuery](http://jquery.com) plugin for creating and applying CSS stylesheets on the fly—useful for sites with user-generated themes. This plugin works for all major browsers: IE, Firefox, Webkit (Chrome, Safari, etc) and Opera.
 
-## Usage
+#### Usage
 
 ```javascript
 $.stylist({
@@ -18,9 +18,9 @@ To clear the styles you have applied, it's simple:
 $.stylist('reset');
 ```
 
-### Defining Properties Multiple Times
+#### Defining Properties Multiple Times
 
-Sometimes it's necessary to have the same property defined multiple times for a rule—a great example being CSS3 background gradients. For that, the syntax is:
+Sometimes it's necessary to have the same property defined multiple times for a rule for various browsers—a great example being CSS3 background gradients. For that, the syntax is:
 
 ```javascript
 $.stylist({
@@ -39,7 +39,7 @@ $.stylist({
 
 ## License
 
-Copyright (c) 2010 DIY Co
+Copyright &copy; 2012 DIY Co
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
 
