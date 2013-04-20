@@ -1,31 +1,32 @@
-/** 
+/**
  * stylist - Runtime Stylesheet Creation
  * Copyright (c) 2012 DIY Co
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at:
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under 
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF 
- * ANY KIND, either express or implied. See the License for the specific language 
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+ * ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  *
- * @author Brian Reavis <brian@diy.org>
+ * @author Brian Reavis <brian@thirdroute.com>
  */
 
 ;(function($) {
 	"use strict";
-	
+
 	$.stylist = function() {
 		var selector, property, rule;
+		var props, lines, suffix;
 		var action = 'apply';
-		
+
 		// load existing rules
 		var $stylist  = $('#stylist');
 		var rules     = $stylist.data('rules') || {};
 		var rules_new = {};
-		
+
 		// parse arguments
 		switch (arguments.length) {
 			case 1:
@@ -39,7 +40,7 @@
 			default:
 				return;
 		}
-		
+
 		// merge rules
 		for (selector in rules_new) {
 			if (rules_new.hasOwnProperty(selector)) {
@@ -50,21 +51,20 @@
 				}
 			}
 		}
-		delete rules_new;
-		
+
 		if (action === 'reset') {
 			$stylist.remove();
 			return;
 		}
-		
+
 		if (action === 'apply') {
 			// generate css
-			var lines = [], suffix;
-			
+			lines = [];
+
 			for (selector in rules) {
 				if (rules.hasOwnProperty(selector)) {
 					rule = rules[selector];
-					var props = [];
+					props = [];
 					for (property in rule) {
 						if (rule.hasOwnProperty(property)) {
 							if ($.isArray(rule[property])) {
@@ -82,10 +82,10 @@
 				}
 			}
 			var css = lines.join('\n');
-			
+
 			// remove existing stylesheet
 			$stylist.remove();
-			
+
 			// create stylesheet
 			var styleNode = document.createElement('style');
 			styleNode.type = 'text/css';
@@ -94,15 +94,15 @@
 			} else {
 				styleNode.appendChild(document.createTextNode(css));
 			}
-				
+
 			$stylist = $(styleNode);
 			$stylist.attr('id', 'stylist');
 			$stylist.data('rules', rules);
 			$('head').append($stylist);
-			
+
 			return $stylist;
 		}
-		
+
 	};
-	
+
 })(jQuery);

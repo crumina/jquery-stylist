@@ -1,4 +1,4 @@
-# .stylist()
+# jQuery Stylist
 
 A tiny <strong>1kb</strong> [jQuery](http://jquery.com) plugin for creating and applying CSS stylesheets on the fly—useful for sites with user-generated themes. This plugin works for all major browsers: IE, Firefox, Webkit (Chrome, Safari, etc) and Opera.
 
